@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2023 at 11:21 AM
+-- Generation Time: Oct 08, 2023 at 02:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pdbkr`
+-- Database: `panda_bakery`
 --
 
 -- --------------------------------------------------------
@@ -91,6 +91,13 @@ CREATE TABLE `product` (
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `image`, `name`, `price`, `admin_id`) VALUES
+(1, 'pexels-gül-işık-8147948.jpg', 'Bánh kem', 10000, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +109,13 @@ CREATE TABLE `shop` (
   `address` varchar(150) NOT NULL,
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shop`
+--
+
+INSERT INTO `shop` (`address_id`, `address`, `admin_id`) VALUES
+(1, '175 Tây Sơn', 1);
 
 --
 -- Indexes for dumped tables
@@ -118,7 +132,9 @@ ALTER TABLE `admin`
 -- Indexes for table `bill`
 --
 ALTER TABLE `bill`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_customerid` (`customer_id`),
+  ADD KEY `FK_productid` (`product_id`);
 
 --
 -- Indexes for table `customer`
@@ -167,17 +183,24 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bill`
+--
+ALTER TABLE `bill`
+  ADD CONSTRAINT `FK_customerid` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
+  ADD CONSTRAINT `FK_productid` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
 -- Constraints for table `product`
