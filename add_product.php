@@ -18,6 +18,8 @@ if (isset($_POST['submit'])) {
 
     header('location:add_product.php');
 }
+
+// Hủy phiên làm việc nếu không phải admin
 if (!isset($_SESSION['admin'])) {
     session_unset();
     session_destroy();
@@ -25,7 +27,7 @@ if (!isset($_SESSION['admin'])) {
 }
 ?>
 
-<!-- Form login -->
+<!-- Form thêm sản phẩm -->
 <main class="background-2">
     <div class="container myform">
         <form method="post" enctype="multipart/form-data">

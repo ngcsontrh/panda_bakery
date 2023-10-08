@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2023 at 02:28 PM
+-- Generation Time: Oct 08, 2023 at 02:35 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -91,13 +91,6 @@ CREATE TABLE `product` (
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`product_id`, `image`, `name`, `price`, `admin_id`) VALUES
-(1, 'pexels-gül-işık-8147948.jpg', 'Bánh kem', 10000, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -183,7 +176,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shop`

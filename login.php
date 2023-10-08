@@ -82,6 +82,7 @@ if(isset($_POST['login-admin'])) {
 </main>
 
 <script>
+    // Ẩn/hiện mật khẩu
     function showOrHidePassword() {
         let x = document.getElementById("password");
         if (x.type === "password") {

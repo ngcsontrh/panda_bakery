@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
 
 <div class="container min-vh-100 d-flex justify-content-center">
     <div class="row">
+        <!-- 3 cột hiển thị hình ảnh mẫu sản phẩm-->
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card m-5">
                 <img src="./assets/images/home-1.jpg" class="card-img-top" alt="Ảnh sản phẩm">
@@ -29,12 +30,14 @@ if (isset($_POST['submit'])) {
                 <img src="./assets/images/home-3.jpg" class="card-img-top" alt="Ảnh sản phẩm">
             </div>
         </div>
+        <!-- Hiển thị các sản phẩm được chủ cửa hàng đăng tải -->
         <?php
         $sql = "SELECT * FROM product";
         $query = mysqli_query($con, $sql);
         if ($query) {
             while ($row = mysqli_fetch_assoc($query)) {
-                if ($_SESSION['customer']) {
+                // Hiển thị sản phẩm với tư cách khách hàng
+                if ($_SESSION['customer']) { 
                     echo '
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="card m-5">
@@ -58,8 +61,10 @@ if (isset($_POST['submit'])) {
                             </form>
                         </div>
                     </div>
-                </div>';
-                } else echo '
+                </div>'; 
+                }
+                // Hiển thị sản phẩm với tư cách admin hoặc không đăng nhập 
+                else echo '
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="card m-5">
                         <img src="./assets/images/products/' . $row['image'] . '" class="card-img-top" alt="Ảnh sản phẩm">

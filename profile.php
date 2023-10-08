@@ -1,6 +1,6 @@
 <?php
 include('assets/header.php');
-
+// Nếu không đăng nhập sẽ hủy phiên làm việc và trở về trang chủ
 if (!isset($_SESSION['login'])) {
     session_unset();
     session_destroy();
@@ -17,6 +17,7 @@ if (!isset($_SESSION['login'])) {
                 </div>
                 <div class="mt-3">
                     <?php
+                    // Hiển thị với khách hàng
                     if($_SESSION['customer']) {        
                         $user_id = $_SESSION['user_id'];
                         $sql = "SELECT * FROM customer WHERE customer_id = '$user_id'";
@@ -40,6 +41,7 @@ if (!isset($_SESSION['login'])) {
                                 <div class="col"><?php echo $row['address']?>'</div>
                             </div>
                     <?php }; 
+                    // Hiển thị thông tin với admin
                     if($_SESSION['admin']) {
                         $user_id = $_SESSION['user_id'];
                         $sql = "SELECT * FROM admin WHERE admin_id = '$user_id'";
