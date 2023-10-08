@@ -1,11 +1,10 @@
 # panda_bakery
-First create a database name panda_bakery in your database. Than import sql file in your panda_bakery database.
+First create a database name panda_bakery in your database. Than import sql file in your panda_bakery database. <br/>
 
-admin access:
-account: admin
-password: admin
+admin access: <br/>
+account: admin <br/>
+password: admin <br/>
 
-
-customer access:
-account: customer
-password: customer
+customer access: <br/>
+account: customer <br/>
+password: customer <br/>
