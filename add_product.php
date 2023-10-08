@@ -37,7 +37,8 @@ if (!isset($_SESSION['admin'])) {
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Giá sản phẩm</label>
-                <input type="text" required class="form-control" id="price" name="price">
+                <small class="fst-italic text-mutex">(Chỉ nhập chữ số)</small>
+                <input type="text" required pattern="[0-9]+" class="form-control" id="price" name="price">
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Ảnh sản phẩm</label>
