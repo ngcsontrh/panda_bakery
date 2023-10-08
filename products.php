@@ -15,21 +15,30 @@ if (isset($_POST['submit'])) {
 <div class="container min-vh-100 d-flex justify-content-center">
     <div class="row">
         <!-- 3 cột hiển thị hình ảnh mẫu sản phẩm-->
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <!-- <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card m-5">
                 <img src="./assets/images/home-1.jpg" class="card-img-top" alt="Ảnh sản phẩm">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Bánh Muffin</h5>
+                </div>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card m-5">
                 <img src="./assets/images/home-2.jpg" class="card-img-top" alt="Ảnh sản phẩm">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Bánh Kem</h5>
+                </div>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card m-5">
                 <img src="./assets/images/home-3.jpg" class="card-img-top" alt="Ảnh sản phẩm">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sandwich</h5>
+                </div>
             </div>
-        </div>
+        </div> -->
         <!-- Hiển thị các sản phẩm được chủ cửa hàng đăng tải -->
         <?php
         $sql = "SELECT * FROM product";
@@ -37,7 +46,7 @@ if (isset($_POST['submit'])) {
         if ($query) {
             while ($row = mysqli_fetch_assoc($query)) {
                 // Hiển thị sản phẩm với tư cách khách hàng
-                if ($_SESSION['customer']) { 
+                if ($_SESSION['customer']) {
                     echo '
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="card m-5">
@@ -61,7 +70,7 @@ if (isset($_POST['submit'])) {
                             </form>
                         </div>
                     </div>
-                </div>'; 
+                </div>';
                 }
                 // Hiển thị sản phẩm với tư cách admin hoặc không đăng nhập 
                 else echo '
