@@ -20,7 +20,7 @@ if (!$_SESSION['customer']) {
         <!-- Thông tin sản phẩm đã đặt -->
         <?php
         $customer_id = $_SESSION['user_id'];
-        $sql = "SELECT product.image as image, product.name as name, bill.amount as amount, bill.total as total, bill.delivery_time as delivery_time FROM bill INNER JOIN product ON bill.product_id = product.product_id WHERE customer_id = '$customer_id'";
+        $sql = "SELECT product.image as image, product.name as name, bill.amount as amount, bill.total as total, bill.delivery_time as delivery_time FROM bill INNER JOIN product ON bill.product_id = product.product_id WHERE customer_id = $customer_id";
         $query = mysqli_query($con, $sql);
         if ($query) {
             while ($row = mysqli_fetch_assoc($query)) { ?>
