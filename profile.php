@@ -38,7 +38,7 @@ if (!isset($_SESSION['login'])) {
                             </div>
                             <div class="row">
                                 <div class="col fw-medium">Address:</div>
-                                <div class="col"><?php echo $row['address']?>'</div>
+                                <div class="col"><?php echo $row['address']?></div>
                             </div>
                     <?php }; 
                     // Hiển thị thông tin với admin
