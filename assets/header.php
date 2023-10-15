@@ -35,13 +35,13 @@ if ($_SESSION['admin']) {
 
 <body>
     <nav class="navbar sticky-top navbar-expand-lg bg-black" data-bs-theme="dark">
-        <div class="container-fluid">
+        <div class="container-fluid" style="font-size: 1.1em;">
             <a class="navbar-brand font-lobster" href="#">Panda Bakery</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav" style="margin-left: auto;">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
                     </li>
@@ -55,10 +55,11 @@ if ($_SESSION['admin']) {
                     <?php if ($_SESSION['admin']) { ?>
                         <li class="nav-item"><a class="nav-link" href="add_product.php">Thêm mặt hàng</a></li>
                         <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="#addAddress">Thêm địa chỉ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.php">Đơn hàng</a></li>
                     <?php } ?>
 
                 </ul>
-                <ul class="navbar-nav" style="margin-left: auto;">
+                <ul class="navbar-nav ms-auto">
                     <?php if ($_SESSION['login'] == true) { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="profile.php">Thông tin</a>
