@@ -12,11 +12,15 @@ if (isset($_POST['submit'])) {
 
     $sql = "INSERT INTO product(name, price, image, admin_id)
             VALUES ('$name', '$price', '$filename', '$admin_id')";
-    mysqli_query($con, $sql);
-    
-    move_uploaded_file($tempname, $folder);
+    try {
+        mysqli_query($con, $sql);
+        move_uploaded_file($tempname, $folder);
+        $_SESSION['success'] = '<p class="fw-semibold text-bg-success p-2 text-center" style="color: #17E617; margin-left: auto;">Thêm sản phẩm thành công!</p>';
+    } catch (mysqli_sql_exception) {
+        $_SESSION['error'] = '<p class="fw-semibold text-bg-danger p-2 text-center" style="color: red; margin-left: auto;">Thêm sản phẩm thất bại!</p>';
+    }    
 
-    header('location:add_product.php');
+    // header('location:add_product.php');
 }
 
 // Hủy phiên làm việc nếu không phải admin
@@ -31,6 +35,16 @@ if (!isset($_SESSION['admin'])) {
 <main class="background-2">
     <div class="container myform">
         <form method="post" enctype="multipart/form-data">
+        <?php
+            if (isset($_SESSION['error'])) {
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+            }
+            if (isset($_SESSION['success'])) {
+                echo $_SESSION['success'];
+                unset($_SESSION['success']);
+            }
+        ?>
             <div class="mb-3">
                 <label for="name" class="form-label">Tên sản phẩm</label>
                 <input type="text" required class="form-control" id="name" name="name">
