@@ -91,7 +91,7 @@ if (!$_SESSION['admin']) {
             $sql = "SELECT bill.id as id,
                             product.name as product_name,
                             bill.amount as amount,
-                            bill.total as total, 
+                            product.price as price, 
                             bill.delivery_time as delivery_time,
                             customer.address as address,
                             customer.fullname as fullname,
@@ -109,7 +109,7 @@ if (!$_SESSION['admin']) {
                         <td><?php echo $row['fullname'] ?></td>
                         <td><?php echo $row['product_name'] ?></td>
                         <td><span class="fw-semibold">Số lượng:</span> <?php echo $row['amount']; ?> <br>
-                            <span class="fw-semibold">Thành tiền:</span> <?php echo $row['total'] ?> đồng
+                            <span class="fw-semibold">Thành tiền:</span> <?php echo $row['amount'] * $row['price'] ?> đồng
                         </td>
                         <td><span class="fw-semibold">Địa chỉ:</span> <?php echo $row['address'] ?><br>
                             <span class="fw-semibold">SĐT:</span> <?php echo $row['phone'] ?>
