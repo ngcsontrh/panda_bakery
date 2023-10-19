@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 08:14 PM
+-- Generation Time: Oct 19, 2023 at 08:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,6 +33,13 @@ CREATE TABLE `admin` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `account`, `password`) VALUES
+(1, 'admin', '$2y$10$HlXGxKSqEWjwJ7Aj8M0pKe7hhlW8hp9MP2cTL46wbzQjbjrUfCyYi');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +54,15 @@ CREATE TABLE `bill` (
   `delivery_time` date NOT NULL,
   `admin_id` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`id`, `customer_id`, `product_id`, `amount`, `delivery_time`, `admin_id`) VALUES
+(1, 1, 1, 9, '2023-10-26', 1),
+(2, 1, 2, 3, '2023-10-24', 1),
+(3, 2, 3, 9, '2023-10-25', 1);
 
 -- --------------------------------------------------------
 
@@ -64,6 +80,14 @@ CREATE TABLE `customer` (
   `admin_id` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `account`, `password`, `fullname`, `address`, `phone`, `admin_id`) VALUES
+(1, 'customer', '$2y$10$7RQWwTdGJ2a5czgarH5aue/YTwalxgW2z7/3wgqx4ZGMmOau7/.JS', 'Customer', '64KTPM4', '0123456789', 1),
+(2, 'proton', '$2y$10$c0o2Q0zWt0Oy1BW0/Jru6u8vNoZyAt5sWviIKsm17UclNusSxhtD.', 'Proton', '6KTPM4', '9876543210', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -78,6 +102,15 @@ CREATE TABLE `product` (
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `image`, `name`, `price`, `admin_id`) VALUES
+(1, 'banh-kem-socola.jpg', 'Bánh Kem Socola', 100000, 1),
+(2, 'banh-muffin-vani.jpg', 'Bánh Muffin Vani', 150000, 1),
+(3, 'banh-sinh-nhat.jpg', 'Bánh Sinh Nhật', 200000, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -89,6 +122,13 @@ CREATE TABLE `shop` (
   `address` varchar(150) NOT NULL,
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shop`
+--
+
+INSERT INTO `shop` (`address_id`, `address`, `admin_id`) VALUES
+(1, '175 Tây Sơn', 1);
 
 --
 -- Indexes for dumped tables
@@ -140,31 +180,31 @@ ALTER TABLE `shop`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
