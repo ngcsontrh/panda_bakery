@@ -4,7 +4,10 @@ First create a database name panda_bakery in your database. Then import sql file
 admin access: <br/>
 account: admin <br/>
 password: admin <br/>
-
+</hr>
 customer access: <br/>
 account: customer <br/>
 password: customer <br/>
+
+account: proton <br/>
+password: proton <br/>
