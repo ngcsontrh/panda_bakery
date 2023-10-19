@@ -5,9 +5,8 @@ if (isset($_POST['submit'])) {
     $product_id = $_POST['product_id'];
     $customer_id = $_SESSION['user_id'];
     $amount = $_POST['amount'];
-    $total = $amount * $_POST['price'];;
     $delivery_time = $_POST['delivery_time'];
-    $sql_order = "INSERT INTO bill(customer_id, product_id, amount, total, delivery_time) VALUES ('$customer_id', '$product_id', '$amount', '$total', '$delivery_time')";
+    $sql_order = "INSERT INTO bill(customer_id, product_id, amount, delivery_time) VALUES ('$customer_id', '$product_id', '$amount', '$delivery_time')";
     mysqli_query($con, $sql_order);
 }
 ?>
