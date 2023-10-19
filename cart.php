@@ -20,7 +20,7 @@ if (!$_SESSION['customer']) {
         <!-- Thông tin sản phẩm đã đặt -->
         <?php
         $customer_id = $_SESSION['user_id'];
-        $sql = "SELECT product.image as image, product.name as name, bill.amount as amount, bill.total as total, bill.delivery_time as delivery_time FROM bill INNER JOIN product ON bill.product_id = product.product_id WHERE customer_id = $customer_id ORDER BY bill.delivery_time desc";
+        $sql = "SELECT product.image as image, product.name as name, bill.amount as amount, product.price as price, bill.delivery_time as delivery_time FROM bill INNER JOIN product ON bill.product_id = product.product_id WHERE customer_id = $customer_id ORDER BY bill.delivery_time desc";
         $query = mysqli_query($con, $sql);
         if ($query) {
             while ($row = mysqli_fetch_assoc($query)) { ?>
@@ -40,7 +40,7 @@ if (!$_SESSION['customer']) {
               </div>
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                 <p class="fs-5">Tổng cộng:</p>
-                <p class="fs-5"><?php echo $row['total'] ?> đồng</p>
+                <p class="fs-5"><?php echo $row['amount'] * $row['price'] ?> đồng</p>
               </div>
             </div>
           </div>
