@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 07:48 PM
+-- Generation Time: Oct 19, 2023 at 08:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,8 +44,8 @@ CREATE TABLE `bill` (
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
-  `total` int(11) NOT NULL,
-  `delivery_time` date NOT NULL
+  `delivery_time` date NOT NULL,
+  `admin_id` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -60,7 +60,8 @@ CREATE TABLE `customer` (
   `password` varchar(255) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `address` varchar(150) NOT NULL,
-  `phone` varchar(10) NOT NULL
+  `phone` varchar(10) NOT NULL,
+  `admin_id` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -106,14 +107,16 @@ ALTER TABLE `admin`
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_customerid` (`customer_id`),
-  ADD KEY `FK_productid` (`product_id`);
+  ADD KEY `FK_productid` (`product_id`),
+  ADD KEY `admin_id` (`admin_id`);
 
 --
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`),
-  ADD UNIQUE KEY `account` (`account`);
+  ADD UNIQUE KEY `account` (`account`),
+  ADD KEY `admin_id` (`admin_id`);
 
 --
 -- Indexes for table `product`
@@ -172,7 +175,14 @@ ALTER TABLE `shop`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `FK_customerid` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
-  ADD CONSTRAINT `FK_productid` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+  ADD CONSTRAINT `FK_productid` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
+  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`);
+
+--
+-- Constraints for table `customer`
+--
+ALTER TABLE `customer`
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`);
 
 --
 -- Constraints for table `product`
