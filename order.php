@@ -23,7 +23,7 @@ if (!$_SESSION['admin']) {
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="favoriteProductModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="favoriteProductModalLabel">Mặt hàng yêu thích</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
