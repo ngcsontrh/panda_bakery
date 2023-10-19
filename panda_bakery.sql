@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2023 at 04:36 PM
+-- Generation Time: Oct 19, 2023 at 07:48 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,13 +32,6 @@ CREATE TABLE `admin` (
   `account` varchar(32) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`admin_id`, `account`, `password`) VALUES
-(1, 'admin', '$2y$10$zueQahj8COMXTZhOwvIcm.4aRo47x9r9EoC0NxkzDlwdwzV0L9CfG');
 
 -- --------------------------------------------------------
 
@@ -70,13 +63,6 @@ CREATE TABLE `customer` (
   `phone` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`customer_id`, `account`, `password`, `fullname`, `address`, `phone`) VALUES
-(1, 'customer', '$2y$10$AiCzHGiLAi15Zp3NowTKQeSmAIJMoud58IBo8U/zusC/IyEUUD04u', 'Customer', 'Vietnam', '0123456789');
-
 -- --------------------------------------------------------
 
 --
@@ -91,15 +77,6 @@ CREATE TABLE `product` (
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`product_id`, `image`, `name`, `price`, `admin_id`) VALUES
-(1, 'banh-kem-socola.jpg', 'Bánh Socola', 10000, 1),
-(2, 'banh-muffin-vani.jpg', 'Bánh Muffin', 50000, 1),
-(3, 'banh-sinh-nhat.jpg', 'Bánh Sinh Nhật', 200000, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -111,13 +88,6 @@ CREATE TABLE `shop` (
   `address` varchar(150) NOT NULL,
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `shop`
---
-
-INSERT INTO `shop` (`address_id`, `address`, `admin_id`) VALUES
-(1, '175 Tây Sơn', 1);
 
 --
 -- Indexes for dumped tables
@@ -167,7 +137,7 @@ ALTER TABLE `shop`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `bill`
@@ -179,19 +149,19 @@ ALTER TABLE `bill`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
