@@ -43,7 +43,7 @@ if ($_SESSION['admin']) {
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
+                        <a class="nav-link" aria-current="page" href="index.php">Trang chủ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="products.php">Sản phẩm</a>
@@ -53,6 +53,7 @@ if ($_SESSION['admin']) {
                     <?php } ?>
 
                     <?php if ($_SESSION['admin']) { ?>
+                        <li class="nav-item"><a class="nav-link" href="customer.php">Khách hàng</a></li>
                         <li class="nav-item"><a class="nav-link" href="add_product.php">Thêm mặt hàng</a></li>
                         <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="#addAddress">Thêm địa chỉ</a></li>
                         <li class="nav-item"><a class="nav-link" href="order.php">Đơn hàng</a></li>
@@ -64,10 +65,10 @@ if ($_SESSION['admin']) {
                         <li class="nav-item">
                             <a class="nav-link" href="profile.php">Thông tin</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link active" href="logout.php">Đăng xuất</a></li>
+                        <li class="nav-item"><a class="nav-link" href="logout.php">Đăng xuất</a></li>
                     <?php } else { ?>
                         <li class="nav-item">
-                            <a class="nav-link active" href="login.php">Đăng nhập</a>
+                            <a class="nav-link" href="login.php">Đăng nhập</a>
                         </li>
                     <?php } ?>
                 </ul>
